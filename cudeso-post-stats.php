@@ -5,7 +5,7 @@ Description: Display statistics about the number of posts
 Version: 1.0
 Author: Koen Van Impe
 Author URI: http://www.vanimpe.eu/
-Plugin URI: http://www.vanimpe.eu/
+Plugin URI: https://github.com/cudeso/cudeso-post-stats
 */
 
 /*
