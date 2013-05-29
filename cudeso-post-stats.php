@@ -229,7 +229,7 @@ function cps_get_googlechart_per_month() {
 function cps_get_posts_per_weekday() {
 	global $wpdb;
 	
-	$posts_per_dayname = $wpdb->get_results("SELECT DAYNAME(post_date) AS dayname, DAYOFWEEK(post_date) as dayofweek, COUNT(*) AS qt FROM $wpdb->posts WHERE post_type = 'post' GROUP BY dayname,dayofweek ORDER BY dayofweek ASC;", 0);
+	$posts_per_dayname = $wpdb->get_results("SELECT DAYNAME(post_date) AS dayname, DAYOFWEEK(post_date) as dayofweek, COUNT(*) AS qt FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish'  GROUP BY dayname,dayofweek ORDER BY dayofweek ASC;", 0);
 
 	if (is_array($posts_per_dayname) and count($posts_per_dayname) > 0) return $posts_per_dayname;
 	else return false;
@@ -245,7 +245,7 @@ function cps_get_posts_per_weekday() {
 function cps_get_posts_per_month() {
 	global $wpdb;
 	
-	$posts_per_month = $wpdb->get_results("SELECT MONTH(post_date) AS month, COUNT(*) AS qt FROM $wpdb->posts WHERE post_type = 'post' GROUP BY month;", 0);
+	$posts_per_month = $wpdb->get_results("SELECT MONTH(post_date) AS month, COUNT(*) AS qt FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish'  GROUP BY month;", 0);
 
 	if (is_array($posts_per_month) and count($posts_per_month) > 0) return $posts_per_month;
 	else return false;
@@ -261,7 +261,7 @@ function cps_get_posts_per_month() {
 function cps_get_posts_per_year() {
 	global $wpdb;
 	
-	$posts_per_year = $wpdb->get_results("SELECT YEAR(post_date) AS year, COUNT(*) AS qt FROM $wpdb->posts WHERE post_type = 'post' GROUP BY year;", 0);
+	$posts_per_year = $wpdb->get_results("SELECT YEAR(post_date) AS year, COUNT(*) AS qt FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' GROUP BY year;", 0);
 
 	if (is_array($posts_per_year) and count($posts_per_year) > 0) return $posts_per_year;
 	else return false;
